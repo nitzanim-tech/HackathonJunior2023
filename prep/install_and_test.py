@@ -1,8 +1,11 @@
-import pygame
-import qrcode
+import pip
 
 
-def main():
+if __name__ == '__main__':
+    pip.main(['install', 'pygame'])
+
+    import pygame
+
     pygame.init()
 
     pygame.display.set_caption("Nitzanim Junior Hackathon")
@@ -12,9 +15,6 @@ def main():
     background.fill(pygame.Color("#ffffff"))
 
     is_running = True
-
-    code = qrcode.make("https://www.nitzanim.tech/").convert('RGB')
-    code_image = pygame.image.fromstring(code.tobytes(), code.size, code.mode)
 
     font = pygame.font.SysFont(None, 48)
     text_img = font.render("Environment is good!", True, pygame.Color("#7755ff"))
@@ -27,14 +27,9 @@ def main():
                 is_running = False
 
         window_surface.blit(background, (0, 0))
-        window_surface.blit(code_image, (400 - code_image.get_width() // 2, 200))
         window_surface.blit(text_img, (text_x_center - text_img.get_width() // 2, 80))
 
-        text_x_center = (text_x_center + 2 + text_img.get_width() // 2) % (800 + text_img.get_width())\
+        text_x_center = (text_x_center + 2 + text_img.get_width() // 2) % (800 + text_img.get_width()) \
                         - text_img.get_width() // 2
 
         pygame.display.update()
-
-
-if __name__ == '__main__':
-    main()
