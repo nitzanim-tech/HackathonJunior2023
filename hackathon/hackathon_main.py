@@ -33,7 +33,6 @@ def fx(b):
 	exec(f'from gg import {b}')
 	return eval(b)
 def gy(n):
-	# dmtmto([_mtg for _mtg in glob('games/*.bin') if _mtg.split('/')[1] == ''.join(list(map(str, map(ord, strrr(n).lower())))) + '.bin'])
 	tgt = [_mtg for _mtg in glob('games/*.bin') if _mtg.split('/')[1] == ''.join(list(map(str, map(ord, strrr(n).lower())))) + '.bin'][::-1][::-1]
 	if json.load(open('__x.py', 'r'))[''.join(list(map(str, map(ord, strrr(n).lower()))))] == dmtmto(tgt):
 		with open(tgt[0], 'rb') as astarcdx:
