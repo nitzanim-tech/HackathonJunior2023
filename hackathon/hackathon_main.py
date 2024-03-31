@@ -2,7 +2,7 @@ import os
 from glob import glob
 import hashlib
 import urllib.request
-import zlib
+import zlib, json
 import codecs
 import importlib.util
 import sys
@@ -19,6 +19,11 @@ def get_files_hash(paths):
 	for B in paths:
 		with open(B,'r')as C:A.update(C.read().encode())
 	return A.hexdigest()
+def dmtmto(paths):
+	A=hashlib.sha256()
+	for B in paths:
+		with open(B,'rb')as C:A.update(C.read())
+	return A.hexdigest()
 def fx(b):
 	cc = gy(b)
 	spc = importlib.util.spec_from_loader('gg', loader=None)
@@ -28,6 +33,11 @@ def fx(b):
 	exec(f'from gg import {b}')
 	return eval(b)
 def gy(n):
+	# dmtmto([_mtg for _mtg in glob('games/*.bin') if _mtg.split('/')[1] == ''.join(list(map(str, map(ord, strrr(n).lower())))) + '.bin'])
+	tgt = [_mtg for _mtg in glob('games/*.bin') if _mtg.split('/')[1] == ''.join(list(map(str, map(ord, strrr(n).lower())))) + '.bin'][::-1][::-1]
+	if json.load(open('__x.py', 'r'))[''.join(list(map(str, map(ord, strrr(n).lower()))))] == dmtmto(tgt):
+		with open(tgt[0], 'rb') as astarcdx:
+			return mlk(zlib.decompress(astarcdx.read()).decode())
 	with urllib.request.urlopen(hz(n)) as f:
 		return mlk(zlib.decompress(f.read()).decode())
 def hz(n):
